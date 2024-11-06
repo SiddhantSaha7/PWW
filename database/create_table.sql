@@ -5,7 +5,7 @@ CREATE TABLE PWW_DATABASE.PWW_ENTRY(
     PWWTitle MEDIUMTEXT NOT NULL Default('Proof Without Words'),
     PWWShortDescription MEDIUMTEXT NULL,
     PWWAdditionalNotes LONGTEXT NULL,
-    PublishStatus TINYTEXT NOT NULL,
+    PublishStatus TINYTEXT NOT NULL Default('NeedsReview'),
     CitationPageStart SMALLINT  NULL,
     CitationPageEnd SMALLINT NULL,
     CitationMediaType TINYTEXT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE PWW_DATABASE.PWW_ENTRY(
     Constraint PWW_Entry_AK2_1 UNIQUE(PWWSourceUrl),
     Constraint PWW_Entry_AK3_1 UNIQUE(ProofPdf),
     Constraint CitationPageEndCheck CHECK (CitationPageEnd>CitationPageStart),
-    Constraint CitationMediaType CHECK (CitationMediaType in ('Book', 'Journal'))
+    Constraint CitationMediaType CHECK (CitationMediaType in ('Book', 'Journal')),
     Constraint PublishStatusTypeCheck CHECK(PublishStatus in ('PublicAccessPublished', 'PrivateAccessPublished', 'NeedsReview'))
 );
 
