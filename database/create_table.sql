@@ -20,6 +20,7 @@ CREATE TABLE PWW_DATABASE.PWW_ENTRY(
     Constraint PWW_Entry_AK3_1 UNIQUE(ProofPdf),
     Constraint CitationPageEndCheck CHECK (CitationPageEnd>CitationPageStart),
     Constraint CitationMediaType CHECK (CitationMediaType in ('Book', 'Journal'))
+    Constraint PublishStatusTypeCheck CHECK(PublishStatus in ('PublicAccessPublished', 'PrivateAccessPublished', 'NeedsReview'))
 );
 
 CREATE TABLE PWW_DATABASE.PUBLIC_ACCESS_DATES_PWW(
