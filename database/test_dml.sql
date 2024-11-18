@@ -192,7 +192,7 @@ insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('DataEntry','Dat
 insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('Referee','These people will need to be able to access all of the content in the database for a limited period of time, but will not have access to editing functionality.');
 insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('GeneralUser','These people will have access to view but not edit the content of the database, and will have limited or no access to the images');
 
-/*insert into the USER_INFORMATION Table*/
+/*insert into the USER_INFORMATION Table, only 2 users created for now*/
 insert into USER_INFORMATION (RoleName, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
 ('Editor', 'Gordon', 'Williams', 'giwilliams@alaska.edu', 'testPassword', '2024-11-16');
 insert into USER_INFORMATION (RoleName, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
@@ -209,3 +209,27 @@ insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10006, 1,
 insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10007, 1, '2024-11-15');
 insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10008, 1, '2024-11-15');
 insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10009, 1, '2024-11-15');
+
+/* insert into the CITED_WORKS table*/
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 1');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 2');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 3');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 4');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 5');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 6');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 7');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 8');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 9');
+insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 10');
+
+/*insert into PWW_TAGGED_CITED_WORKS intersection table*/
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10000,5000);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10001,5001);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10002,5002);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10003,5005);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10003,5003);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10005,5004);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10006,5006);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10007,5007);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10008,5008);
+insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10009,5009);
