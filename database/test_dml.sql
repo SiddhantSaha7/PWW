@@ -28,7 +28,7 @@ NULL, 1986, 'http://www.jstor.org/stable/2690011','MAA', 'pdf5');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
-('Proof without Words', 'Single diagram using similar triangles and squares of increasing sizes to demonstrate by $1+2+\cdots +n=\frac{1}{2}n(n+1)$ and $1^3+2^3+\cdots +n^3=\left(\frac{1}{2}n(n+1)\right)^2$.', 'PublicAccessPublished', 'Journal',
+('Proof without Words', 'Single diagram using similar triangles and squares of increasing sizes to demonstrate by $1+2+\cdots +n=\frac{1}{2}n(n+1)$ and $1^3+2^3+\cdots +n^3=\left(\frac{1}{2}n(n+1)\right)^2$.', 'PrivateAccessPublished', 'Journal',
 NULL, 1992, 'http://www.jstor.org/stable/2691330','MAA', 'pdf6');
 
 
@@ -44,7 +44,7 @@ NULL, 1993, NULL,'MAA', 'pdf8');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
-('Proof without Words: Area under a Cycloid Cusp', 'Proof that area under an arch of the cycloid is $3\pi R^2$ where $R$ is the radius of the circle. Method uses dissection of arch into a circle, and two copies of a region of area $\pi R^2$.', 'PublicAccessPublished', 'Journal',
+('Proof without Words: Area under a Cycloid Cusp', 'Proof that area under an arch of the cycloid is $3\pi R^2$ where $R$ is the radius of the circle. Method uses dissection of arch into a circle, and two copies of a region of area $\pi R^2$.', 'NeedsReview', 'Journal',
 NULL, 1993, 'http://www.jstor.org/stable/2690472','MAA', 'pdf9');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
@@ -229,34 +229,15 @@ insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('DataEntry','Dat
 insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('Referee','These people will need to be able to access all of the content in the database for a limited period of time, but will not have access to editing functionality.');
 insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('GeneralUser','These people will have access to view but not edit the content of the database, and will have limited or no access to the images');
 
-<<<<<<< Updated upstream
-/*insert into the USER_INFORMATION Table*/
-insert into USER_INFORMATION (RoleName, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
-('Editor', 'Gordon', 'Williams', 'giwilliams@alaska.edu', 'testPassword', '2024-11-16');
-insert into USER_INFORMATION (RoleName, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
-('Referee', 'Siddhant', 'Saha', 'saha.si@northeastern.edu', 'testPassword2', '2024-11-16');
-
-/*insert into the PWW_ENTRY_CREATOR intersection table*/
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10000, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10001, 1, '2024-11-16');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10002, 1, '2024-10-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10003, 1, '2024-09-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10004, 1, '2024-08-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10005, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10006, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10007, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10008, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10009, 1, '2024-11-15');
-=======
 /*insert into the USER_INFORMATION Table, only 2 users created for now*/
-insert into USER_INFORMATION (RoleId, UserId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
-(1, 100000, 'Gordon', 'Williams', 'giwilliams@alaska.edu', 'testPassword', '2024-11-16');
-insert into USER_INFORMATION (RoleId, UserId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
-(2, 100001, 'Siddhant', 'Saha', 'saha.si@northeastern.edu', 'testPassword2', '2024-11-16');
-insert into USER_INFORMATION (RoleId, UserId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
-(3, 100002, 'Elizabeth', 'Sluchak', 'sluchak.e@northeastern.edu', 'testPassword3', '2024-11-16');
-insert into USER_INFORMATION (RoleId, UserId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
-(4, 100003, 'Ethan', 'Virgil', 'virgil.e@northeastern.edu', 'testPassword4', '2024-11-16');
+insert into USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+(1, 'Gordon', 'Williams', 'giwilliams@alaska.edu', 'testPassword', '2024-11-16');
+insert into USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+(2, 'Siddhant', 'Saha', 'saha.si@northeastern.edu', 'testPassword2', '2024-11-16');
+insert into USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+(3, 'Elizabeth', 'Sluchak', 'sluchak.e@northeastern.edu', 'testPassword3', '2024-11-16');
+insert into USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+(4, 'Ethan', 'Virgil', 'virgil.e@northeastern.edu', 'testPassword4', '2024-11-16');
 
 /*insert into the PWW_ENTRY_CREATOR intersection table*/
 insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10000, 100000, '2024-11-15');
@@ -271,16 +252,16 @@ insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10008, 10
 insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10009, 100000, '2024-12-01');
 
 /* insert into the CITED_WORKS table*/
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 1');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 2');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 3');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 4');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 5');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 6');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 7');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 8');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 9');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 10');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 1');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 2');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 3');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 4');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 5');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 6');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 7');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 8');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 9');
+insert into CITED_WORKS(GivenCitation) values ('Dummy citation 10');
 
 /*insert into PWW_TAGGED_CITED_WORKS intersection table*/
 insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10000,5000);
@@ -294,4 +275,3 @@ insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (1
 insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10008,5008);
 insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10009,5009);
 insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10000,5002);
->>>>>>> Stashed changes
