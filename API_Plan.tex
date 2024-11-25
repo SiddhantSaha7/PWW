@@ -1,0 +1,241 @@
+\documentclass[manuscript]{acmart}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\geometry{margin=1in}
+
+
+% Custom Commands for Highlights
+\newcommand{\important}[1]{\textcolor{red}{\textbf{#1}}}
+\newcommand{\definition}[1]{\textbf{\textit{#1}}}
+
+% Title and Author
+\title{Setup and Team Onboarding Instructions}
+\author{Your Name}
+\date{\today}
+
+
+\geometry{margin=1in}
+
+% Hyperlink Setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=red,
+    urlcolor=cyan,
+    pdftitle={Research Notes},
+    pdfauthor={Your Name}
+}
+
+
+
+% Title and Author
+\title{PWW Implementation Notes}
+\author{Liz Sluchak }
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{API Calls by View Table}
+\subsection{Landing Page View: public}
+
+\begin{table*}[h!]
+  \scriptsize % Adjust font size for better readability
+  \setlength{\tabcolsep}{4pt} % Adjust column spacing
+  \caption{Landing API Details}
+  \label{tab:api-details}
+  \begin{tabular}{llm{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}}
+    \toprule
+    API-Call & Method & Endpoint & Request Body & Response Fields & Edge Case & Access Level & Authentication & Authorization \\
+    \midrule
+    API-Call 1 & GET & /api/endpoint1 & Example Request 1 & Field1, Field2, Field3 & None & Admin & Yes & Role-Based \\
+    API-Call 2 & POST & /api/endpoint2 & Example Request 2 & Field1, Field2 & Missing Parameter & User & Yes & Token-Based \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+\subsection{Login View: public}
+\begin{table*}[h!]
+  \scriptsize % Adjust font size for better readability
+  \setlength{\tabcolsep}{4pt} % Adjust column spacing
+  \caption{Login API Details}
+  \label{tab:api-details}
+  \begin{tabular}{llm{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}}
+    \toprule
+    API-Call & Method & Endpoint & Request Body & Response Fields & Edge Case & Access Level & Authentication & Authorization \\
+    \midrule
+    API-Call 1 & GET & /api/endpoint1 & Example Request 1 & Field1, Field2, Field3 & None & Admin & Yes & Role-Based \\
+    API-Call 2 & POST & /api/endpoint2 & Example Request 2 & Field1, Field2 & Missing Parameter & User & Yes & Token-Based \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+\subsection{PWW Data Entry View - data entry by internal db volunteer: private}
+\begin{table*}[h!]
+  \scriptsize % Adjust font size for better readability
+  \setlength{\tabcolsep}{4pt} % Adjust column spacing
+  \caption{Private Data Entry API Details}
+  \label{tab:api-details}
+  \begin{tabular}{llm{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}}
+    \toprule
+    API-Call & Method & Endpoint & Request Body & Response Fields & Edge Case & Access Level & Authentication & Authorization \\
+    \midrule
+    API-Call 1 & GET & /api/endpoint1 & Example Request 1 & Field1, Field2, Field3 & None & Admin & Yes & Role-Based \\
+    API-Call 2 & POST & /api/endpoint2 & Example Request 2 & Field1, Field2 & Missing Parameter & User & Yes & Token-Based \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+
+\subsection{PWW Data Entry View - data entry by public: public}
+\begin{table*}[h!]
+  \scriptsize % Adjust font size for better readability
+  \setlength{\tabcolsep}{4pt} % Adjust column spacing
+  \caption{Public Data Entry API Details}
+  \label{tab:api-details}
+  \begin{tabular}{llm{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}}
+    \toprule
+    API-Call & Method & Endpoint & Request Body & Response Fields & Edge Case & Access Level & Authentication & Authorization \\
+    \midrule
+    API-Call 1 & GET & /api/endpoint1 & Example Request 1 & Field1, Field2, Field3 & None & Admin & Yes & Role-Based \\
+    API-Call 2 & POST & /api/endpoint2 & Example Request 2 & Field1, Field2 & Missing Parameter & User & Yes & Token-Based \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+
+
+\subsection{DB Query Result View: role based filtering}
+\begin{table*}[h!]
+  \scriptsize % Adjust font size for better readability
+  \setlength{\tabcolsep}{4pt} % Adjust column spacing
+  \caption{Query Result API Details}
+  \label{tab:api-details}
+  \begin{tabular}{llm{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}}
+    \toprule
+    API-Call & Method & Endpoint & Request Body & Response Fields & Edge Case & Access Level & Authentication & Authorization \\
+    \midrule
+    API-Call 1 & GET & /api/endpoint1 & Example Request 1 & Field1, Field2, Field3 & None & Admin & Yes & Role-Based \\
+    API-Call 2 & POST & /api/endpoint2 & Example Request 2 & Field1, Field2 & Missing Parameter & User & Yes & Token-Based \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+\subsection{Editor User Access Management View: editor only}
+\begin{table*}[h!]
+  \scriptsize % Adjust font size for better readability
+  \setlength{\tabcolsep}{4pt} % Adjust column spacing
+  \caption{Editor Access Management API Details}
+  \label{tab:api-details}
+  \begin{tabular}{llm{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}}
+    \toprule
+    API-Call & Method & Endpoint & Request Body & Response Fields & Edge Case & Access Level & Authentication & Authorization \\
+    \midrule
+    API-Call 1 & GET & /api/endpoint1 & Example Request 1 & Field1, Field2, Field3 & None & Admin & Yes & Role-Based \\
+    API-Call 2 & POST & /api/endpoint2 & Example Request 2 & Field1, Field2 & Missing Parameter & User & Yes & Token-Based \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+\newpage
+\subsection{Editor Settings View: editor only}
+\begin{table*}[h!]
+  \scriptsize % Adjust font size for better readability
+  \setlength{\tabcolsep}{4pt} % Adjust column spacing
+  \caption{Editor Setting API Details}
+  \label{tab:api-details}
+  \begin{tabular}{llm{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}}
+    \toprule
+    API-Call & Method & Endpoint & Request Body & Response Fields & Edge Case & Access Level & Authentication & Authorization \\
+    \midrule
+    API-Call 1 & GET & /api/endpoint1 & Example Request 1 & Field1, Field2, Field3 & None & Admin & Yes & Role-Based \\
+    API-Call 2 & POST & /api/endpoint2 & Example Request 2 & Field1, Field2 & Missing Parameter & User & Yes & Token-Based \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+\subsection{Export Citation View: role based filtering}
+\begin{table*}[h!]
+  \scriptsize % Adjust font size for better readability
+  \setlength{\tabcolsep}{4pt} % Adjust column spacing
+  \caption{Export PWW Citation API Details}
+  \label{tab:api-details}
+  \begin{tabular}{llm{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}
+                  m{0.13\textwidth}}
+    \toprule
+    API-Call & Method & Endpoint & Request Body & Response Fields & Edge Case & Access Level & Authentication & Authorization \\
+    \midrule
+    API-Call 1 & GET & /api/endpoint1 & Example Request 1 & Field1, Field2, Field3 & None & Admin & Yes & Role-Based \\
+    API-Call 2 & POST & /api/endpoint2 & Example Request 2 & Field1, Field2 & Missing Parameter & User & Yes & Token-Based \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
