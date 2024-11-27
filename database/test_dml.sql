@@ -95,10 +95,8 @@ insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (
 insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10002, '2024-11-16');
 insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10003, '2024-11-16');
 insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10004, '2024-11-16');
-insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10005, '2024-11-16');
 insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10006, '2024-11-16');
 insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10007, '2024-11-16');
-insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10008, '2024-11-15');
 insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10009, '2024-11-16');
 
 /*inserts into the AUTHOR AND PWW INTERSECTION TABLE*/
