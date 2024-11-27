@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+
+    <title>Landing Page</title>
+  </head>
+  <body>
+    <h1> Welcome to PWW!</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>PWWTitle</th>
+            </tr>
+        </thead>
+    </table>
+    <tbody>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.PWWTitle }}</td>
+        </tr>
+    </tbody>
+  </body>
+</html>
