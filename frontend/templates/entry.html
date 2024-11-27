@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Entry</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+        form {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        form label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        form input, form textarea, form select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #d6dce5;
+            border-radius: 5px;
+            background-color: #f7f9fc;
+            width: 100%;
+        }
+        form input:focus, form textarea:focus, form select:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 5px rgba(0, 102, 204, 0.5);
+        }
+        form button {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #004b8d;
+        }
+        .form-section {
+            background-color: #f4f8fb;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .form-section h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .author-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .author-list li {
+            display: flex;
+            justify-content: space-between;
+            background: #e6f7ff;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+        }
+        .author-list button {
+            background-color: #ff4d4d;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .author-list button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Enter a New PWW Proof</h1>
+    </header>
+    <main>
+        <form action="/submit_entry" method="post" enctype="multipart/form-data">
+            <div class="form-section">
+                <h2>Proof Information</h2>
+                <label for="entryName">Name:</label>
+                <input type="text" id="entryName" name="entryName" required>
+
+                <label for="keywords">Keywords (comma-separated):</label>
+                <input type="text" id="keywords" name="keywords" required>
+
+                <label for="description">Short Description:</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <label for="notes">Additional Notes:</label>
+                <textarea id="notes" name="notes"></textarea>
+            </div>
+
+            <div class="form-section">
+                <h2>Author Information</h2>
+                <label for="author">Author Name:</label>
+                <input type="text" id="author" name="author">
+
+                <label for="university">Given University:</label>
+                <input type="text" id="university" name="university">
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city">
+
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country">
+
+                <button type="button" onclick="addAuthor()">Add Author</button>
+                <ul class="author-list" id="authorList"></ul>
+            </div>
+
+            <div class="form-section">
+                <h2>File Upload</h2>
+                <label for="file">Upload Image/File:</label>
+                <input type="file" id="file" name="file" required>
+            </div>
+
+            <button type="submit">Submit Entry</button>
+        </form>
+    </main>
+
+    <script>
+        const authorList = document.getElementById('authorList');
+
+        function addAuthor() {
+            const authorName = document.getElementById('author').value;
+            const university = document.getElementById('university').value;
+            const city = document.getElementById('city').value;
+            const country = document.getElementById('country').value;
+
+            if (!authorName) {
+                alert('Please enter the author name.');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.textContent = `${authorName}, ${university || 'N/A'}, ${city || 'N/A'}, ${country || 'N/A'}`;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = () => li.remove();
+
+            li.appendChild(deleteButton);
+            authorList.appendChild(li);
+
+            document.getElementById('author').value = '';
+            document.getElementById('university').value = '';
+            document.getElementById('city').value = '';
+            document.getElementById('country').value = '';
+        }
+    </script>
+</body>
+</html>

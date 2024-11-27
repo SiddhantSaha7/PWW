@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Results</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        header {
+            text-align: center;
+            padding: 1rem;
+            background-color: #f4f4f4;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table thead {
+            background-color: #007BFF;
+            color: white;
+        }
+        table th, table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        table tr:nth-child(even) {
+            background-color: #f4f4f4;
+        }
+        table tr:hover {
+            background-color: #e6f7ff;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        .button-link {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .button-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Query Results</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Theorem Name</th>
+                    <th>Keywords</th>
+                    <th>Content Area</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="theorem_details.html">Pythagorean Theorem</a></td>
+                    <td>triangles, geometry</td>
+                    <td>Euclidean Geometry</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a href="query.html" class="button-link">Back to Query</a>
+        </div>
+    </main>
+</body>
+</html>
