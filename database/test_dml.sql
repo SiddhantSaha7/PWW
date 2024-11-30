@@ -28,7 +28,7 @@ NULL, 1986, 'http://www.jstor.org/stable/2690011','MAA', 'pdf5');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
-('Proof without Words', 'Single diagram using similar triangles and squares of increasing sizes to demonstrate by $1+2+\cdots +n=\frac{1}{2}n(n+1)$ and $1^3+2^3+\cdots +n^3=\left(\frac{1}{2}n(n+1)\right)^2$.', 'PublicAccessPublished', 'Journal',
+('Proof without Words', 'Single diagram using similar triangles and squares of increasing sizes to demonstrate by $1+2+\cdots +n=\frac{1}{2}n(n+1)$ and $1^3+2^3+\cdots +n^3=\left(\frac{1}{2}n(n+1)\right)^2$.', 'PrivateAccessPublished', 'Journal',
 NULL, 1992, 'http://www.jstor.org/stable/2691330','MAA', 'pdf6');
 
 
@@ -44,7 +44,7 @@ NULL, 1993, NULL,'MAA', 'pdf8');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
-('Proof without Words: Area under a Cycloid Cusp', 'Proof that area under an arch of the cycloid is $3\pi R^2$ where $R$ is the radius of the circle. Method uses dissection of arch into a circle, and two copies of a region of area $\pi R^2$.', 'PublicAccessPublished', 'Journal',
+('Proof without Words: Area under a Cycloid Cusp', 'Proof that area under an arch of the cycloid is $3\pi R^2$ where $R$ is the radius of the circle. Method uses dissection of arch into a circle, and two copies of a region of area $\pi R^2$.', 'NeedsReview', 'Journal',
 NULL, 1993, 'http://www.jstor.org/stable/2690472','MAA', 'pdf9');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
@@ -90,27 +90,31 @@ insert into JOURNAL_CITATION(PWWEntryId, JournalTitle, JournalVolume, JournalNum
 
 /*inserts into the PUBLIC ACCESS START DATE TABLE*/
 
-insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10000, '2024-11-16');
+insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10000, '2024-11-20');
 insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10001, '2024-11-16');
-insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10002, '2024-11-16');
-insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10003, '2024-11-16');
+insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10002, '2024-12-16');
+insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10003, '2024-12-25');
 insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10004, '2024-11-16');
-insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10006, '2024-11-16');
-insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10007, '2024-11-16');
-insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10009, '2024-11-16');
+insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10005, '2024-12-16');
+insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10006, '2024-12-16');
+insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10007, '2024-12-16');
+insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10008, '2024-11-15');
+insert into PUBLIC_ACCESS_DATES_PWW (PWWEntryId, PublicAccessStartDate) VALUES (10009, '2024-11-30');
 
 /*inserts into the AUTHOR AND PWW INTERSECTION TABLE*/
 
 insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10000, 25000);
-insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10002, 25001);
-insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10003, 25002);
+insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10001, 25001);
+insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10002, 25002);
 insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10003, 25003);
 insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10004, 25004);
-insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10005, 25005);
+insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10005, 25004);
 insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10006, 25006);
 insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10007, 25007);
 insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10008, 25007);
 insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10009, 25008);
+insert into PWW_ENTRY_AUTHOR_INTERSECTION (PWWEntryId, PWWAuthorId) VALUES (10000, 25008);
+
 
 /*insert into TOPIC Table*/
 insert into TOPIC_TAGS (TopicName) VALUES ('Geometry');
@@ -127,9 +131,9 @@ insert into TOPIC_TAGS (TopicName) VALUES ('Statistics');
 /*insert into PWW_TAGGED_TOPICS intersection Table*/
 insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10000,4000);
 insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10001,4001);
-insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10002,4002);
+insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10003,4002);
 insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10003,4000);
-insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10004,4003);
+insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10004,4004);
 insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10005,4004);
 insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10006,4000);
 insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10007,4005);
@@ -150,7 +154,20 @@ INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('00B05', 'Co
 
 /*insert into TAGGED_MSC_CODES intersection table*/
 /* 10 not inserted since data was missing for most of entries in excel*/
-insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10000, 1005, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10000, 1000, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10001, 1001, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10002, 1002, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10003, 1003, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10004, 1004, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10005, 1005, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10006, 1006, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10007, 1007, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10008, 1008, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10009, 1009, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10000, 1009, TRUE);
+insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10009, 1008, TRUE);
+
+
 
 /*insert into THEOREM_TAGS table*/
 insert into THEOREM_TAGS (Theorem) VALUES ('Varignon\’s Theorem');
@@ -166,8 +183,17 @@ insert into THEOREM_TAGS (Theorem) VALUES ('Prime Number Theorem');
 
 /*insert into the TAGGED_THEOREM intersection table*/
 insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10000,2000);
-insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10003,2001);
-insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10006,2002);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10001,2001);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10002,2002);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10003,2003);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10004,2004);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10005,2006);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10006,2006);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10007,2007);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10008,2008);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10009,2009);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10000,2002);
+insert into PWW_TAGGED_THEOREMS (PWWEntryId, TheoremId) VALUES (10009,2004);
 
 /*insert into the KEYWORD_TAGS table*/
 insert into KEYWORD_TAGS (Keyword) VALUES ('Topology');
@@ -182,7 +208,20 @@ insert into KEYWORD_TAGS (Keyword) VALUES ('Abstract Algebra');
 insert into KEYWORD_TAGS (Keyword) VALUES ('Optimization');
 
 /*insert into the PWW_TAGGED_TOPICS intersection table*/
-insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10000, 3002);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10000, 3001);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10001, 3002);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10002, 3003);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10003, 3003);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10004, 3005);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10005, 3006);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10006, 3007);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10007, 3008);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10008, 3009);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10009, 3000);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10000, 3004);
+insert into PWW_TAGGED_KEYWORDS(PWWEntryId, KeywordId) VALUES (10009, 3002);
+
+
 
 /*insert into the USER_ROLES Table*/
 insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('Editor','Its the editor of the journal and editors of the repository');
@@ -191,34 +230,34 @@ insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('Referee','These
 insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('GeneralUser','These people will have access to view but not edit the content of the database, and will have limited or no access to the images');
 
 /*insert into the USER_INFORMATION Table, only 2 users created for now*/
-insert into USER_INFORMATION (RoleName, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
-('Editor', 'Gordon', 'Williams', 'giwilliams@alaska.edu', 'testPassword', '2024-11-16');
-insert into USER_INFORMATION (RoleName, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
-('Referee', 'Siddhant', 'Saha', 'saha.si@northeastern.edu', 'testPassword2', '2024-11-16');
+
+insert into USER_INFORMATION (1, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+(1, 'Gordon', 'Williams', 'giwilliams@alaska.edu', 'testPassword', '2024-11-16');
+insert into USER_INFORMATION (2, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+(2, 'Siddhant', 'Saha', 'saha.si@northeastern.edu', 'testPassword2', '2024-11-16');
+insert into USER_INFORMATION (3, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+(3, 'Elizabeth', 'Sluchak', 'sluchak.e@northeastern.edu', 'testPassword3', '2024-11-16');
+insert into USER_INFORMATION (4, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+(4, 'Ethan', 'Virgil', 'virgil.e@northeastern.edu', 'testPassword4', '2024-11-16');
 
 /*insert into the PWW_ENTRY_CREATOR intersection table*/
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10000, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10001, 1, '2024-11-16');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10002, 1, '2024-10-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10003, 1, '2024-09-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10004, 1, '2024-08-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10005, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10006, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10007, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10008, 1, '2024-11-15');
-insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10009, 1, '2024-11-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10000, 100000, '2024-11-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10001, 100000, '2024-11-16');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10002, 100000, '2024-10-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10003, 100000, '2024-09-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10004, 100000, '2024-08-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10005, 100000, '2024-11-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10006, 100000, '2024-11-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10007, 100001, '2024-11-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10008, 100001, '2024-11-15');
+insert into PWW_ENTRY_CREATORS(PWWEntryId, UserId, DateEdited) VALUES (10009, 100000, '2024-12-01');
 
-/* insert into the CITED_WORKS table*/
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 1');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 2');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 3');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 4');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 5');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 6');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 7');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 8');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 9');
-insert into PWW_CITED_WORKS(GivenCitation) values ('Dummy citation 10');
+
+
+
+
+
+
 
 /*insert into PWW_TAGGED_CITED_WORKS intersection table*/
 insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10000,5000);
@@ -231,3 +270,5 @@ insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (1
 insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10007,5007);
 insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10008,5008);
 insert into PWW_TAGGED_CITED_WORKS(PWWEntryId, PWWCitedWorkCitationID) values (10009,5009);
+
+
