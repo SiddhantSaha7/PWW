@@ -2,21 +2,7 @@ import streamlit as st
 import pandas as pd
 import mysql.connector
 from mysql.connector import Error
-
-def init_connection():
-    """Initialize database connection using mysql-connector-python"""
-    try:
-        connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="dev",
-            database="PWW_DATABASE",
-            unix_socket="/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock"
-        )
-        return connection
-    except Error as e:
-        st.error(f"Error connecting to MySQL: {e}")
-        return None
+from db_connection import init_connection
 
 def load_data(connection):
     """Load data from the PUBLIC_ACCESS_VIEW"""
@@ -27,6 +13,7 @@ def load_data(connection):
         with st.spinner('Loading data...'):
             query = "SELECT * FROM PUBLIC_ACCESS_VIEW"
             df = pd.read_sql(query, connection)
+            df.drop('PWWEntryId', axis=1, inplace= True)
             if df is not None and not df.empty:
                 return df
             else:
