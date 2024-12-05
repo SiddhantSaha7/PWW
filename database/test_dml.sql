@@ -231,13 +231,13 @@ insert into USER_ROLES (RoleName, ShortRoleDescription) VALUES ('GeneralUser','T
 
 /*insert into the USER_INFORMATION Table, only 2 users created for now*/
 
-insert into USER_INFORMATION (1, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+insert into USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
 (1, 'Gordon', 'Williams', 'giwilliams@alaska.edu', 'testPassword', '2024-11-16');
-insert into USER_INFORMATION (2, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+insert into USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
 (2, 'Siddhant', 'Saha', 'saha.si@northeastern.edu', 'testPassword2', '2024-11-16');
-insert into USER_INFORMATION (3, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+insert into USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
 (3, 'Elizabeth', 'Sluchak', 'sluchak.e@northeastern.edu', 'testPassword3', '2024-11-16');
-insert into USER_INFORMATION (4, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
+insert into USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate) VALUES
 (4, 'Ethan', 'Virgil', 'virgil.e@northeastern.edu', 'testPassword4', '2024-11-16');
 
 /*insert into the PWW_ENTRY_CREATOR intersection table*/
