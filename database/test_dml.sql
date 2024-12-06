@@ -4,32 +4,32 @@ USE PWW_DATABASE;
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
 ('Proof Without Words: Varignon\’s Theorem', 'A visual proof of Varignon\’s Theorem', 'PublicAccessPublished', 'Journal',
-'10.4169/college.math.j.48.5.354', 2017, 'https://www.jstor.org/stable/10.4169/college.math.j.48.5.354','MAA', 'pdf1');
+'10.4169/college.math.j.48.5.354', 2017, 'https://www.jstor.org/stable/10.4169/college.math.j.48.5.354','MAA', 'Pal17.pdf');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
 ('Proof without Words: Algebraic Areas', 'Proof that $(a+b)^2+(a-b)^2=2(a^2+b^2)$ using rectangles', 'PublicAccessPublished', 'Journal',
-NULL, 1984, 'http://www.jstor.org/stable/2689683','MAA', 'pdf2');
+NULL, 1984, 'http://www.jstor.org/stable/2689683','MAA', 'Wak84.pdf');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
 ('Proof without Words: A 2 × 2 Determinant Is the Area of a Parallelogram', 'Uses the difference in areas of two rectangles to show that the value of the determinant is the area of an associated rectangle.', 'PublicAccessPublished', 'Journal',
-NULL , 1985, 'http://www.jstor.org/stable/2689900','MAA', 'pdf3');
+NULL , 1985, 'http://www.jstor.org/stable/2689900','MAA', 'Gol85.pdf');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
 ('Behold! The Pythagorean Theorem via Mean Proportions', 'A proof of the Pythagorean Theorem using a triangle erected on the diameter of a circle of radius $c$ with legs of length $a$ and $b$.', 'PublicAccessPublished', 'Journal',
-NULL , 1986, 'http://www.jstor.org/stable/2686255','MAA', 'pdf4');
+NULL , 1986, 'http://www.jstor.org/stable/2686255','MAA', 'Har86.pdf');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
-('Proof without Words: The Arithmetic Mean-Geometric Mean Inequality', 'Dissction of a square into 4 rectangles and a square to demonstrate the inequality.', 'PublicAccessPublished', 'Journal',
-NULL, 1986, 'http://www.jstor.org/stable/2690011','MAA', 'pdf5');
+('Proof without Words: The Arithmetic Mean-Geometric Mean Inequality', 'Dissection of a square into 4 rectangles and a square to demonstrate the inequality.', 'PublicAccessPublished', 'Journal',
+NULL, 1986, 'http://www.jstor.org/stable/2690011','MAA', 'Sch86.pdf');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
 ('Proof without Words', 'Single diagram using similar triangles and squares of increasing sizes to demonstrate by $1+2+\cdots +n=\frac{1}{2}n(n+1)$ and $1^3+2^3+\cdots +n^3=\left(\frac{1}{2}n(n+1)\right)^2$.', 'PrivateAccessPublished', 'Journal',
-NULL, 1992, 'http://www.jstor.org/stable/2691330','MAA', 'pdf6');
+NULL, 1992, 'http://www.jstor.org/stable/2691330','MAA', 'Sch92.pdf');
 
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
@@ -40,17 +40,17 @@ NULL, 1993, NULL,'MAA', 'pdf7');
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
 ('Area under an Arch of the Cycloid', 'Proof that area under an arch of the cycloid is $3\pi R^2$ where $R$ is the radius of the circle. Method uses dissection of arch into a circle, and two copies of a region of area $\pi R^2$.', 'PublicAccessPublished', 'Journal',
-NULL, 1993, NULL,'MAA', 'pdf8');
+NULL, 1993, NULL,'MAA', 'Bee93.pdf');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
 ('Proof without Words: Area under a Cycloid Cusp', 'Proof that area under an arch of the cycloid is $3\pi R^2$ where $R$ is the radius of the circle. Method uses dissection of arch into a circle, and two copies of a region of area $\pi R^2$.', 'NeedsReview', 'Journal',
-NULL, 1993, 'http://www.jstor.org/stable/2690472','MAA', 'pdf9');
+NULL, 1993, 'http://www.jstor.org/stable/2690472','MAA', 'Bee93_2.pdf');
 
 insert into PWW_ENTRY(PWWTitle, PWWShortDescription, PublishStatus, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, 
 PWWGraphicRightsHolder, ProofPdf ) values
 ('Proof Without Words: Series of Perfect Powers', 'A subdivision of a unit square into self-similar collections of rectangles is used to demonstrate that the sum of reciprocals of all perfect powers is 1.', 'PublicAccessPublished', 'Journal',
-'10.4169/math.mag.90.4.286', 2017, 'https://www.jstor.org/stable/10.4169/math.mag.90.4.286','MAA', 'pdf10');
+'10.4169/math.mag.90.4.286', 2017, 'https://www.jstor.org/stable/10.4169/math.mag.90.4.286','MAA', 'Edg17.pdf');
 
 /*Inserts into the PWW_AUTHOR Table*/
 
