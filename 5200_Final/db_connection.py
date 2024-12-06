@@ -8,7 +8,7 @@ def init_connection():
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="",
+            password="dev",
             database="PWW_DATABASE",
             unix_socket="/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock"
         )
