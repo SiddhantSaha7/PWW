@@ -1,6 +1,7 @@
 # Reworked Login Logic in 2_User_Access.py
 import streamlit as st
 from db_connection import init_connection
+import bcrypt
 
 # Initialize session state
 if "logged_in" not in st.session_state:
@@ -16,19 +17,19 @@ def authenticate_user(email, password):
     try:
         cursor = conn.cursor(dictionary=True)
         cursor.execute(
-            """
-            SELECT UserId, UserFirstName, UserLastName, RoleId
-            FROM USER_INFORMATION
-            WHERE UserEmailAddress=%s AND UserPassword=%s
-            """,
-            (email, password),
+            "SELECT UserId, UserFirstName, UserLastName, RoleId, UserPassword FROM USER_INFORMATION WHERE UserEmailAddress = %s",
+            (email,),
         )
         user = cursor.fetchone()
-        return user, None
+        if user and bcrypt.checkpw(password.encode('utf-8'), user['UserPassword'].encode('utf-8')):
+            return user, None
+        else:
+            return None, "Invalid email or password."
     except Exception as e:
         return None, str(e)
     finally:
         conn.close()
+
 
 
 def restrict_access(required_role):
