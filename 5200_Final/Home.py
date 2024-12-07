@@ -3,8 +3,7 @@ import pandas as pd
 from mysql.connector import Error
 from db_connection import init_connection
 from streamlit import session_state as ss
-import base64 #forRenderingPDF
-
+import base64  # forRenderingPDF
 
 # Check if selected-file 'key' for pdf viewer already exists in session_state
 # If not, then initialize it
@@ -12,15 +11,14 @@ if 'selected_file' not in ss:
     ss.selected_file = None
 
 st.set_page_config(
-        page_title="PWW Database Viewer",
-        page_icon="📊",
-        layout="wide"
-    )
+    page_title="PWW Database Viewer",
+    page_icon="📊",
+    layout="wide"
+)
 
 
 # """Load data from the PUBLIC_ACCESS_VIEW"""
 def load_data(connection):
-
     try:
         # test connection
         if connection is None:
@@ -32,7 +30,7 @@ def load_data(connection):
             df = pd.read_sql(query, connection)
 
             # drop PWWEntryId column, not needed for public view
-            df.drop('PWWEntryId', axis=1, inplace= True)
+            df.drop('PWWEntryId', axis=1, inplace=True)
 
             # if dataframe is not empty return it
             if df is not None and not df.empty:
@@ -74,7 +72,6 @@ def display_pdf(file, width=600, height=600):
         st.markdown(pdf_display, unsafe_allow_html=True)
 
 
-
 def change(df):
     """A callback from data editor."""
     delta = ss.pdf
@@ -96,22 +93,59 @@ def change(df):
 
     ss.selected_file = f"./static/pdf/{df.loc[true_index[0], 'ProofPdf']}"
 
+def generate_bibtex(entry):
+    """
+    Generate a BibTeX entry string for the selected proof.
+    """
+    bibtex = f"""@article{{PWW_{entry['CitationDOI'] or entry['PWWTitle'][:10].replace(' ', '_')},
+  author = {{{entry['Authors']}}},
+  title = {{{entry['PWWTitle']}}},
+  year = {{{entry['CitationYear']}}},
+  journal = {{{entry['CitationMediaType']}}},
+  pages = {{{entry['CitationPageStart']}-{entry['CitationPageEnd']}}},
+  doi = {{{entry['CitationDOI']}}},
+  url = {{{entry['PWWSourceUrl']}}}
+}}"""
+    return bibtex
+
+
+def change(df):
+    """A callback from data editor."""
+    delta = ss.pdf
+
+    # Save the index that has true value on the View column.
+    true_index = []
+    for k, v in delta['edited_rows'].items():
+        for k1, v1 in v.items():
+            if k1 == 'View' and v1:
+                true_index.append(k)
+
+    # If there are more than 1 true index, set the selected to None
+    # to not display any pdf or allow BibTeX export.
+    if not true_index or len(true_index) > 1:
+        ss.selected_file = None
+        ss.selected_bibtex_entry = None
+        return
+
+    selected_row = df.iloc[true_index[0]]
+    ss.selected_file = f"./static/pdf/{selected_row['ProofPdf']}"
+    ss.selected_bibtex_entry = selected_row.to_dict()
+
+
+
 def main():
     # Set page config
 
-    
-
-    
     try:
         # Initialize connection
         conn = init_connection()
-        
+
         if conn:
             # Load data
             df = load_data(conn)
 
             st.title("Proofs Without Words: MAA Public Database")
-            
+
             # Display data with search and filtering
             if df is not None:
 
@@ -139,15 +173,17 @@ def main():
                         # Display row count
                         st.write(f"Showing {len(filtered_df)} records")
 
-
                         edited_df = st.data_editor(
                             filtered_df,
-                            column_order=['View', 'CitationYear', 'PWWTitle', 'Authors', 'PWWShortDescription', 'PWWAdditionalNotes', 'PWWSourceUrl', 'CitationDOI', 'CitationMediaType', 'CitationPageStart', "CitationPageEnd", "ProofPdf"],
+                            column_order=['View', 'CitationYear', 'PWWTitle', 'Authors', 'PWWShortDescription',
+                                          'PWWAdditionalNotes', 'PWWSourceUrl', 'CitationDOI', 'CitationMediaType',
+                                          'CitationPageStart', "CitationPageEnd", "ProofPdf"],
                             column_config={
                                 'CitationYear': st.column_config.TextColumn("Year Published", disabled=True),
                                 'PWWTitle': st.column_config.TextColumn("Proof Without Words Title", disabled=True),
                                 'Authors': st.column_config.TextColumn("Author(s) of PWW", disabled=True),
-                                'PWWShortDescription': st.column_config.TextColumn("Short Description of PWW", disabled=True),
+                                'PWWShortDescription': st.column_config.TextColumn("Short Description of PWW",
+                                                                                   disabled=True),
                                 'PWWAdditionalNotes': st.column_config.TextColumn("Additional Notes", disabled=True),
                                 "PWWSourceUrl": st.column_config.LinkColumn("PWW Stable URL", disabled=True),
                                 "CitationDOI": st.column_config.TextColumn("PWW DOI", disabled=True),
@@ -162,7 +198,7 @@ def main():
                             key='pdf',
                             on_change=change,
                             args=(df,)
-                    )
+                        )
 
                         # Add export functionality
                         if st.button("Export to CSV"):
@@ -178,18 +214,26 @@ def main():
                     with cols[1]:
                         if ss.selected_file:
                             display_pdf(ss.selected_file, width=700, height=700)
+                            if ss.selected_bibtex_entry:
+                                if st.button("Export to BibTeX"):
+                                    bibtex = generate_bibtex(ss.selected_bibtex_entry)
+                                    st.download_button(
+                                        label="Download BibTeX",
+                                        data=bibtex,
+                                        file_name="proof.bib",
+                                        mime="text/plain"
+                                    )
                         else:
                             st.info('Check a single checkbox under the View column on the dataframe in the left side.')
-
-
-
-                    
             # Close connection
             conn.close()
-                
+
     except Exception as e:
         st.error(f"Application error: {e}")
         st.info("Please check your database connection settings and try again.")
+
+
+
 
 if __name__ == "__main__":
     main()
