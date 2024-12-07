@@ -1,5 +1,6 @@
 import streamlit as st
 from db_connection import init_connection
+import bcrypt
 from datetime import date
 
 
@@ -18,13 +19,15 @@ def create_user(first_name, last_name, email, password, role_id, start_date, end
         if cursor.fetchone()[0] > 0:
             return False, "Email already exists. Please use a different email."
 
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
         # Insert the new user
         cursor.execute(
             """
             INSERT INTO USER_INFORMATION (RoleId, UserFirstName, UserLastName, UserEmailAddress, UserPassword, UserAccessStartDate, UserAccessEndDate)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
             """,
-            (role_id, first_name, last_name, email, password, start_date, end_date),
+            (role_id, first_name, last_name, email, hashed_password, start_date, end_date),
         )
         conn.commit()
         return True, "User created successfully!"
