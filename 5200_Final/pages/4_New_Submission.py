@@ -4,6 +4,9 @@ from insert_table_scripts import insert_pwwEntry, insert_author, insert_keywords
 from db_connection import init_connection
 st.title("Create New Proof Without Word")
 
+
+
+
 def main():
     #for the main PWW Table
     title = st.text_input("Enter Name of the PWW Article", key="title")
@@ -18,9 +21,7 @@ def main():
     citationYear = st.selectbox('Citation year, select None if not published yet', years, key="citYear") 
     sourceUrl = st.text_input("Source URL for the PWW article, leave blank if no URL", key="url")
     graphicRightsHolder = st.text_input("Graphic rights holder for the PWW article, leave blank if unknown", key="graphicRightsHolder")
-    #proofGraphic = st.file_uploader("Upload image/pdf of the proof")
-    # this will be changed
-    proofPdf = 'pdf1213r41523'
+    proofGraphic = st.file_uploader("Upload image/pdf of the proof")
     citationMediaType = st.selectbox('Select the media type where the article was published, leave blank if not published yet', ('', 'Book', 'Journal'), key="media") 
 
     if citationMediaType == "Book":
@@ -72,7 +73,7 @@ def main():
         else:
             try:
                 #insert into the main PWW ENTRY Table
-                pwwEntryId = insert_pwwEntry(conn, title, shortDescription, additionalNotes, publishStatus , citationPageStart, citationPageEnd, citationMediaType, citationDOI, citationYear, sourceUrl, graphicRightsHolder, proofPdf)
+                pwwEntryId = insert_pwwEntry(conn, title, shortDescription, additionalNotes, publishStatus , citationPageStart, citationPageEnd, citationMediaType, citationDOI, citationYear, sourceUrl, graphicRightsHolder, proofGraphic)
 
                 #insert into the author table and pww_author intersection table
                 for author in authors:
@@ -135,9 +136,6 @@ def main():
         st.session_state.submitted = False
         #this is not working as expected, session reset still needs to be checked
         st.session_state.clear()
-
-        for key in st.session_state.keys():
-            del st.session_state[key]
     elif not st.session_state.submit_successful and st.session_state.submitted:
         st.error("There was an issue with submission, please check the errors")
 

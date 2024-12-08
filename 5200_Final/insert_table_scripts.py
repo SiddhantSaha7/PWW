@@ -1,7 +1,35 @@
 import streamlit as st
 from db_connection import init_connection
+import os
+from pathlib import Path
+
+
+# Define the upload directory
+UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "static/pdf")
+
+# Ensure the directory exists
+Path(UPLOAD_DIR).mkdir(parents=True, exist_ok=True)
 
 # insert in the PWW ENTRY table
+def save_uploaded_file(uploaded_file):
+    try:
+        # Generate a unique file name
+        fileName = uploaded_file.name
+        
+        # Full path where the file will be saved
+        save_path = os.path.join(UPLOAD_DIR, fileName)
+        if os.path.exists(save_path):
+            st.error("File with the same name already exists! Please change it.")
+            raise 
+        # Save the file locally
+        with open(save_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        
+        return fileName
+    except Exception as e:
+        st.error(f"Error saving file: {e}")
+        raise 
+
 def insert_pwwEntry(conn, PWWTitle, PWWShortDescription, PWWAdditionalNotes, PublishStatus, 
     CitationPageStart, CitationPageEnd, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl,  
     PWWGraphicRightsHolder, ProofPdf):
@@ -16,8 +44,9 @@ def insert_pwwEntry(conn, PWWTitle, PWWShortDescription, PWWAdditionalNotes, Pub
         CitationYear = int(CitationYear) if str(CitationYear).strip() else None
         PWWSourceUrl = PWWSourceUrl.strip() if PWWSourceUrl.strip() else None
         PWWGraphicRightsHolder = PWWGraphicRightsHolder.strip() if PWWGraphicRightsHolder.strip() else None
+        fileName = save_uploaded_file(ProofPdf)
         c.execute("""INSERT INTO PWW_ENTRY(PWWTitle, PWWShortDescription, PWWAdditionalNotes, PublishStatus, CitationPageStart, CitationPageEnd, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, PWWGraphicRightsHolder, ProofPdf) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""", 
-        (PWWTitle, PWWShortDescription, PWWAdditionalNotes, PublishStatus, CitationPageStart, CitationPageEnd, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, PWWGraphicRightsHolder, ProofPdf))
+        (PWWTitle, PWWShortDescription, PWWAdditionalNotes, PublishStatus, CitationPageStart, CitationPageEnd, CitationMediaType, CitationDOI, CitationYear, PWWSourceUrl, PWWGraphicRightsHolder, fileName))
         pwwEntryId = c.lastrowid
         return pwwEntryId
     except Exception as e:
