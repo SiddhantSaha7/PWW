@@ -1,6 +1,7 @@
 # Reworked Login Logic in 2_User_Access.py
 import streamlit as st
 from db_connection import init_connection
+from Home import load_data, display_pdf, generate_bibtex, change, main_page
 import bcrypt
 
 # Initialize session state
@@ -42,6 +43,13 @@ def restrict_access(required_role):
         st.error("You do not have permission to access this page.")
         st.stop()  # Stop further execution
 
+def referee():
+    '''
+    Referee logged in, see all proofs
+    '''
+    main_page("private")
+
+
 
 # Login page
 def login_page():
@@ -54,6 +62,7 @@ def login_page():
             st.session_state["logged_in"] = True
             st.session_state["user"] = user
             st.success(f"Welcome, {user['UserFirstName']}!")
+            st.experimental_rerun()
         else:
             st.error(error or "Invalid credentials.")
 
@@ -61,27 +70,28 @@ def login_page():
 # TODO: this could be where you could implement a private session
 def private_session():
     user = st.session_state.get("user")
-    access_level = user['RoleID']
-    
+    access_level = user['RoleId']
+
     # IF USER IS EDITOR
     if access_level == 1:
         pass
     # if user is data entry staff
     elif access_level == 2:
         pass
-    
+
     # if user is referee
     elif access_level == 3:
-        pass
-    
-    
-    restrict_access([1,2,4])
-    st.title("Logged In")
-    user = st.session_state["user"]
-    st.write(f"Hello, {user['UserFirstName']} {user['UserLastName']}!")
+        referee()
+
+    else:
+        st.error("You do not have the necessary permissions to access this page.")
+        st.stop()
+
+        # Add logout button
     if st.button("Logout"):
         st.session_state["logged_in"] = False
         st.session_state["user"] = {}
+        st.experimental_rerun()
 
 
 # Navigation
