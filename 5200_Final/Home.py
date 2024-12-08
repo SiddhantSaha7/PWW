@@ -97,21 +97,17 @@ def change(df):
     ss.selected_file = f"./static/pdf/{df.loc[true_index[0], 'ProofPdf']}"
 
 def main():
-    # Set page config
-
-    
-
     
     try:
         # Initialize connection
         conn = init_connection()
-        
+
         if conn:
             # Load data
             df = load_data(conn)
 
             st.title("Proofs Without Words: MAA Public Database")
-            
+
             # Display data with search and filtering
             if df is not None:
 
@@ -121,65 +117,125 @@ def main():
                 with cols[0]:
                     # Main title
 
-                    st.subheader("Data View")
+                    st.subheader("Proof Without Words Database Explorer")
 
                     if df is not None:
+                        # Show a multiselect widget with the genres using `st.multiselect`.
+                        all_tags = df.TOPICS.tolist()
+                        selected_topics = st.multiselect(
+                            "Filter by Topic",
+                            options=all_tags
+                        )
+
+                        # Show a multiselect widget with the genres using `st.multiselect`.
+                        all_theorems = df.THEOREMS.tolist()
+                        selected_theorems = st.multiselect(
+                            "Filter by Theorem:",
+                            options=all_theorems
+                        )
+
+                        # Show a multiselect widget with the genres using `st.multiselect`.
+                        all_msc = df.PRIMARY_MSC_CODE.unique().tolist() + df.SECONDARY_MSC_CODE.unique().tolist()
+
+                        selected_msc = st.multiselect(
+                            "Filter by MSC Code:",
+                            options=all_msc
+                        )
+
+
+
+
+
+                        print(df.columns)
+
                         # Add search functionality
                         search_term = st.text_input("Search in any column:", "")
 
-                        if search_term:
-                            # Create a mask for searching across all columns
-                            mask = df.astype(str).apply(
-                                lambda x: x.str.contains(search_term, case=False)
+                        # Calculate the year range from the DataFrame
+                        min_year = int(df["CitationYear"].min())
+                        max_year = int(df["CitationYear"].max())
+
+                        # Streamlit slider for selecting years
+                        selected_years = st.slider("Years", min_year, max_year, (min_year, max_year))
+
+
+
+                        # Start with the full dataset
+                        filtered_df = df.copy()
+
+                        # Apply search filter if a search term is provided
+                        if search_term.strip():
+                            mask = filtered_df.astype(str).apply(
+                                lambda x: x.str.contains(search_term, case=False, na=False)
                             ).any(axis=1)
-                            filtered_df = df[mask]
-                        else:
-                            filtered_df = df
+                            filtered_df = filtered_df[mask]
 
-                        # Display row count
-                        st.write(f"Showing {len(filtered_df)} records")
+                        # Apply topic filter if topics are selected
+                        if selected_topics:
+                            filtered_df = filtered_df[filtered_df["TOPICS"].isin(selected_topics)]
+
+                        # Apply theorem filter if theorems are selected
+                        if selected_theorems:
+                            filtered_df = filtered_df[filtered_df["THEOREMS"].isin(selected_theorems)]
+
+                        # Apply MSC filter if MSC codes are selected
+                        if selected_msc:
+                            # Rows where either the primary or secondary MSC matches
+                            filtered_df = filtered_df[
+                                filtered_df["PRIMARY_MSC_CODE"].isin(selected_msc) |
+                                filtered_df["SECONDARY_MSC_CODE"].isin(selected_msc)
+                                ]
+
+                        # Apply year filter based on the slider input
+                        filtered_df = filtered_df[filtered_df["CitationYear"].between(selected_years[0], selected_years[1])]
 
 
-                        edited_df = st.data_editor(
-                            filtered_df,
-                            column_order=['View', 'CitationYear', 'PWWTitle', 'Authors', 'PWWShortDescription', 'PWWAdditionalNotes', 'PWWSourceUrl', 'CitationDOI', 'CitationMediaType', 'CitationPageStart', "CitationPageEnd", "ProofPdf"],
-                            column_config={
-                                'CitationYear': st.column_config.TextColumn("Year Published", disabled=True),
-                                'PWWTitle': st.column_config.TextColumn("Proof Without Words Title", disabled=True),
-                                'Authors': st.column_config.TextColumn("Author(s) of PWW", disabled=True),
-                                'PWWShortDescription': st.column_config.TextColumn("Short Description of PWW", disabled=True),
-                                'PWWAdditionalNotes': st.column_config.TextColumn("Additional Notes", disabled=True),
-                                "PWWSourceUrl": st.column_config.LinkColumn("PWW Stable URL", disabled=True),
-                                "CitationDOI": st.column_config.TextColumn("PWW DOI", disabled=True),
-                                "CitationMediaType": st.column_config.TextColumn("Media Type", disabled=True),
-                                "CitationPageStart": st.column_config.TextColumn("Citation Page Start", disabled=True),
-                                "CitationPageEnd": st.column_config.TextColumn("Citation Page End", disabled=True),
-                                # "PWWTaggedTopics": st.column_config.TextColumn("Tagged Topics", disabled=True),
-                                "ProofPdf": None
-                            },
-                            use_container_width=True,
-                            hide_index=True,
-                            key='pdf',
-                            on_change=change,
-                            args=(df,)
-                    )
 
-                        # Add export functionality
-                        if st.button("Export to CSV"):
-                            csv = df.to_csv(index=False)
-                            st.download_button(
-                                label="Download CSV",
-                                data=csv,
-                                file_name="pww_data.csv",
-                                mime="text/csv"
-                            )
+            # Display row count
+            st.write(f"Showing {len(filtered_df)} records")
 
-                    # pdf view on the right side
-                    with cols[1]:
-                        if ss.selected_file:
-                            display_pdf(ss.selected_file, width=700, height=700)
-                        else:
-                            st.info('Check a single checkbox under the View column on the dataframe in the left side.')
+
+            edited_df = st.data_editor(
+                filtered_df,
+                column_order=['View', 'CitationYear', 'PWWTitle', 'Authors', 'PWWShortDescription', 'PWWAdditionalNotes', 'PWWSourceUrl', 'CitationDOI', 'CitationMediaType', 'CitationPageStart', "CitationPageEnd", "ProofPdf"],
+                column_config={
+                    'CitationYear': st.column_config.TextColumn("Year Published", disabled=True),
+                    'PWWTitle': st.column_config.TextColumn("Proof Without Words Title", disabled=True),
+                    'Authors': st.column_config.TextColumn("Author(s) of PWW", disabled=True),
+                    'PWWShortDescription': st.column_config.TextColumn("Short Description of PWW", disabled=True),
+                    'PWWAdditionalNotes': st.column_config.TextColumn("Additional Notes", disabled=True),
+                    "PWWSourceUrl": st.column_config.LinkColumn("PWW Stable URL", disabled=True),
+                    "CitationDOI": st.column_config.TextColumn("PWW DOI", disabled=True),
+                    "CitationMediaType": st.column_config.TextColumn("Media Type", disabled=True),
+                    "CitationPageStart": st.column_config.TextColumn("Citation Page Start", disabled=True),
+                    "CitationPageEnd": st.column_config.TextColumn("Citation Page End", disabled=True),
+                    # "PWWTaggedTopics": st.column_config.TextColumn("Tagged Topics", disabled=True),
+                    "ProofPdf": None
+                },
+                use_container_width=True,
+                hide_index=True,
+                key='pdf',
+                on_change=change,
+                args=(df,)
+        )
+
+            # Add export functionality
+            if st.button("Export to CSV"):
+                csv = df.to_csv(index=False)
+                st.download_button(
+                    label="Download CSV",
+                    data=csv,
+                    file_name="pww_data.csv",
+                    mime="text/csv"
+                )
+
+        # pdf view on the right side
+        with cols[1]:
+            if ss.selected_file:
+                display_pdf(ss.selected_file, width=700, height=700)
+            else:
+                st.info('Check a single checkbox under the View column on the dataframe in the left side.')
+
 
 
 
