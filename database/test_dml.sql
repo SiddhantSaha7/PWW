@@ -140,20 +140,9 @@ insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10007,4005);
 insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10008,4005);
 insert into PWW_TAGGED_TOPICS (PWWEntryId, TopicId) values (10009,4004);
 
-/*insert into MSC_2020 TAGS table*/
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('00A05', 'General mathematics');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('00A08', 'Recreational mathematics');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('01A16', 'Egyptian');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('01-01', 'Instructional exposition (textbooks, tutorial papers, etc.)');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('00A30', 'Philosophy of mathematics');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('00A73', 'Dimensional analysis');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('00B60', 'Collections of reprinted articles');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('01A20', 'Greek, Roman');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('01A27', 'Japan');
-INSERT INTO MSC_2020_TAGS (MSC2020Codes, MathematicalField) VALUES ('00B05', 'Collections of abstracts of lectures');
+/*insert into MSC_2020 TAGS table handled in another script*/
 
 /*insert into TAGGED_MSC_CODES intersection table*/
-/* 10 not inserted since data was missing for most of entries in excel*/
 insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10000, 1000, TRUE);
 insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10001, 1001, TRUE);
 insert into PWW_TAGGED_MSC (PWWEntryId, MSC2020CodeId, IsPrimaryCode) VALUES (10002, 1002, TRUE);
