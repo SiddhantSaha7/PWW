@@ -104,15 +104,17 @@ def change(df):
     ss.selected_file = f"./static/pdf/{selected_row['ProofPdf']}"
     ss.selected_bibtex_entry = selected_row.to_dict()
 
-
-def main():
+def main_page(state = "public"):
     try:
         # Initialize connection
         conn = init_connection()
 
         if conn:
             # Load data
-            df = load_data(conn, 'public')
+            if state == 'private':
+                df = load_data(conn, 'private')
+            else:
+                df = load_data(conn, 'public')
             st.title("Proofs Without Words: MAA Public Database")
 
             if df is not None:
@@ -229,6 +231,9 @@ def main():
         st.error(f"Application error: {e}")
         st.info("Please check your database connection settings and try again.")
 
+
+def main():
+    main_page()
 
 if __name__ == "__main__":
     main()
