@@ -62,7 +62,7 @@ def login_page():
             st.session_state["logged_in"] = True
             st.session_state["user"] = user
             st.success(f"Welcome, {user['UserFirstName']}!")
-            st.experimental_rerun()
+            st._rerun()
         else:
             st.error(error or "Invalid credentials.")
 
