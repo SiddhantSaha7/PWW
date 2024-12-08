@@ -133,7 +133,9 @@ def main():
         st.success("Your PWW Article is submitted successully!")
         st.session_state.submit_successful = False
         st.session_state.submitted = False
+        #this is not working as expected, session reset still needs to be checked
         st.session_state.clear()
+
         for key in st.session_state.keys():
             del st.session_state[key]
     elif not st.session_state.submit_successful and st.session_state.submitted:
@@ -142,4 +144,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# toDo: Session reset + pdf upload
         
