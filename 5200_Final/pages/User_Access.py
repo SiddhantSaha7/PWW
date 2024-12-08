@@ -57,9 +57,24 @@ def login_page():
         else:
             st.error(error or "Invalid credentials.")
 
+
 # TODO: this could be where you could implement a private session
 def private_session():
-    # example implementation of restrict access, if i only want editors and data entry staff
+    user = st.session_state.get("user")
+    access_level = user['RoleID']
+    
+    # IF USER IS EDITOR
+    if access_level == 1:
+        pass
+    # if user is data entry staff
+    elif access_level == 2:
+        pass
+    
+    # if user is referee
+    elif access_level == 3:
+        pass
+    
+    
     restrict_access([1,2,4])
     st.title("Logged In")
     user = st.session_state["user"]
