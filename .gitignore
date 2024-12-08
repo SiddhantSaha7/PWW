@@ -1,2 +1,12 @@
 # Created by venv; see https://docs.python.org/3/library/venv.html
-*
+flask/
+bin/
+etc/
+include/
+lib/
+share/
+pyenv.cfg
+5200_final/__pycache__
+*/.DS_Store
+.DS_Store
+pyvenv.cfg
