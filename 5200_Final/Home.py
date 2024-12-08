@@ -20,13 +20,16 @@ st.set_page_config(
 )
 
 # Load data from the PUBLIC_ACCESS_VIEW
-def load_data(connection):
+def load_data(connection, state='public'):
     try:
         if connection is None:
             return None
 
         with st.spinner('Loading data...'):
-            query = "SELECT * FROM PUBLIC_ACCESS_VIEW"
+            if state == 'private':
+                query = "SELECT * FROM PRIVATE_ACCESS_VIEW"
+            else:
+                query = "SELECT * FROM PUBLIC_ACCESS_VIEW"
             df = pd.read_sql(query, connection)
 
             # Drop PWWEntryId column, not needed for public view
@@ -109,7 +112,7 @@ def main():
 
         if conn:
             # Load data
-            df = load_data(conn)
+            df = load_data(conn, 'public')
             st.title("Proofs Without Words: MAA Public Database")
 
             if df is not None:
