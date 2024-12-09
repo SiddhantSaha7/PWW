@@ -19,8 +19,6 @@ BEGIN
 
         DELETE FROM PUBLIC_ACCESS_DATES_PWW WHERE PWWEntryId = entryId;
 
-        --INSERT INTO test_sp_execution (TimeOfExec) VALUES (CURRENT_TIMESTAMP);
-
         FETCH C1 INTO entryId, endDate;
     END WHILE;
 
@@ -30,7 +28,6 @@ END;
 
 DELIMITER ;
 
---event for the procedure to run every 5 seconds
 CREATE EVENT runEveryFiveSeconds
     ON SCHEDULE EVERY 5 SECOND
       DO
